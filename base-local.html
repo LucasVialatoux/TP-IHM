@@ -17,9 +17,7 @@
   <body>
 
 
-	 <!--
-		C'est ici que vous insérez votre code HTML.
-	 -->
+	 
 	 <!-- Menu -->
 	 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   		<span class="navbar-brand" >Gestion QCM</span>
@@ -41,25 +39,72 @@
 	  </div>
 	</nav>
 	<!-- Fin menu -->
-
-	 <div class="container-fluid">
-	 	<div class="row">
-	 		
-	 	</div>
-	 	<div class="row">
-
-	 	</div>
-	 	<div class="row">
-	 		
-	 	</div>
-	 	<div class="row">
-
-	 	</div>
-	 	<div class="row">
-
-	 	</div>
-	 </div>
+	<div id="creer" class="collapse">
+		
 	
+	 <div class="container pb-5" style="padding-bottom:400px;">
+	 	<div class="row">
+	 		<form>
+			 	<div class="form-group">
+			    	<label for="QCMname">Nom du nouveau QCM</label>
+			    	<input type="text" class="form-control" id="QCMname" aria-describedby="qcmHelp" placeholder="Entrer le nom du QCM">
+			    	<small id="qcmHelp" class="form-text text-muted">Ce nom vous servira à retrouver votre QCM parmi la liste des QCMs existant.</small>
+			  	</div>
+			  	<button type="submit" class="btn btn-primary" onclick="setQCMname();" data-toggle="collapse" href="#newQCM">Créer le QCM</button>
+			</form>
+	 	</div>
+		 <div id="newQCM" class="collapse">
+		 <!-- Default form contact -->
+			<form class="text-center border border-light p-4">
+
+			    <p class="h4 mb-4" id="nomQCMFinal"></p>
+
+			    <!-- Nom question -->
+			    <input type="text" id="intituleQuestion" class="form-control mb-4" placeholder="Intitulé de la question">
+
+			    <!-- Réponses possible -->
+			    <input type="text" id="Réponse1" class="form-control mb-4" placeholder="1ère réponse possible">
+			    <input type="text" id="Réponse2" class="form-control mb-4" placeholder="2ème réponse possible">
+			    <!-- Subject -->
+			    <label>Réponse correcte</label>
+			    <select class="browser-default custom-select mb-4">
+			        <option value="" disabled>Choisissez la bonne réponse à la question</option>
+			        <option value="1" selected>Réponse 1</option>
+			        <option value="2">Réponse 2</option>
+			        <option value="3">Réponse 3</option>
+			        <option value="4">Réponse 4</option>
+			    </select>
+
+			    <!-- Message -->
+			    <div class="form-group">
+			        <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
+			    </div>
+
+			    <!-- Copy -->
+			    <div class="custom-control custom-checkbox mb-4">
+			        <input type="checkbox" class="custom-control-input" id="defaultContactFormCopy">
+			        <label class="custom-control-label" for="defaultContactFormCopy">Send me a copy of this message</label>
+			    </div>
+
+			    <!-- Send button -->
+			    <button class="btn btn-info btn-block" type="submit">Ajouter cette question</button>
+
+			</form>
+			<!-- Default form contact -->
+		</div>
+		<div class="row">
+			test
+		</div>
+		<div class="row">
+			test
+		</div>
+		<div class="row">
+			test
+		</div>
+	</div>
+	</div>
+
+
 	<div id="affichage" class="collapse">
 		<div class="card card-body">
     		QCM existant
@@ -67,28 +112,11 @@
   		QCM édité le 14/02/2019
 	</div>
 	
-	<div id="creer" class="collapse">
-		<div id="AjoutQuestion" class="col-xs-4">
-			<div class="row">
-				Veuillez entrer le nom du QCM
-	 		</div>
-	 		<div class="row">
-				Cliquez sur votre choix
-				<button type="button" class="btn btn-success">Ajouter une question</button>
-				<button type="button" class="btn btn-danger">Supprimer une question</button>
-			</div>
-
-			Veuillez entrer le numéro de la question :
-
-			Veuillez entrer l'intitulé de la question :
-
-			Veuillez entrer les réponses possible :
-		</div>
-	</div>
+	
 	
 
 	<!-- Footer -->
-	<footer class="page-footer font-small stylish-color-dark pt-4" style="position:fixed;width:100%;">
+	<footer class="page-footer font-small stylish-color-dark pt-1" style="position:fixed;width:100%;">
 
     	<!-- Réseaux Sociaux -->
     	<ul class="list-unstyled list-inline text-center">
@@ -137,6 +165,11 @@
 			divCreer = document.getElementById("Creer");
 			divCreer.style.visibility="hidden";
 			btnCreer.style.visibility="hidden";
+		}
+
+		function setQCMname(){
+			nomQCM = document.getElementById("QCMname").value;
+			document.getElementById("nomQCMFinal").textContent=nomQCM;
 		}
 		
 	</script>
