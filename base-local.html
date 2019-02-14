@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./lib/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+  	<!-- Bootstrap core CSS -->
+  	<link href="./lib/css/bootstrap.min.css" rel="stylesheet">
+  	<!-- Material Design Bootstrap -->
+  	<link href="./lib/css/mdb.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+
+	 <!--
+		C'est ici que vous insérez votre code HTML.
+	 -->
+	 <!-- Menu -->
+	 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  		<span class="navbar-brand" >Gestion QCM</span>
+  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"></span>
+  		</button>
+	  	<div class="collapse navbar-collapse" id="navbarText">
+	    	<ul class="navbar-nav mr-auto">
+	      		<li class="nav-item active">
+	        		<a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
+	      		</li>
+	      		<li class="nav-item">
+	        		<a class="nav-link" data-toggle="collapse" href="#creer">Créer QCM</a>
+	      		</li>
+	      		<li class="nav-item">
+	        		<a class="nav-link" data-toggle="collapse" href="#affichage">Afficher QCM</a>
+	      		</li>
+	    	</ul>
+	  </div>
+	</nav>
+	<!-- Fin menu -->
+
+	 <div class="container-fluid">
+	 	<div class="row">
+	 		
+	 	</div>
+	 	<div class="row">
+
+	 	</div>
+	 	<div class="row">
+	 		
+	 	</div>
+	 	<div class="row">
+
+	 	</div>
+	 	<div class="row">
+
+	 	</div>
+	 </div>
+	
+	<div id="affichage" class="collapse">
+		<div class="card card-body">
+    		QCM existant
+  		</div>
+  		QCM édité le 14/02/2019
+	</div>
+	
+	<div id="creer" class="collapse">
+		<div id="AjoutQuestion" class="col-xs-4">
+			<div class="row">
+				Veuillez entrer le nom du QCM
+	 		</div>
+	 		<div class="row">
+				Cliquez sur votre choix
+				<button type="button" class="btn btn-success">Ajouter une question</button>
+				<button type="button" class="btn btn-danger">Supprimer une question</button>
+			</div>
+
+			Veuillez entrer le numéro de la question :
+
+			Veuillez entrer l'intitulé de la question :
+
+			Veuillez entrer les réponses possible :
+		</div>
+	</div>
+	
+
+	<!-- Footer -->
+	<footer class="page-footer font-small stylish-color-dark pt-4" style="position:fixed;width:100%;">
+
+    	<!-- Réseaux Sociaux -->
+    	<ul class="list-unstyled list-inline text-center">
+    	  	<li class="list-inline-item">
+    	    	<a class="btn-floating btn-fb mx-1" href="https://www.facebook.com/">
+    	      		<i class="fab fa-facebook-f"> </i>
+    	    	</a>
+    	  	</li>
+    	  	<li class="list-inline-item">
+    	    	<a class="btn-floating btn-tw mx-1" href="https://twitter.com/">
+    	      		<i class="fab fa-twitter"> </i>
+    	    	</a>
+    	  	</li>
+    	  	<li class="list-inline-item">
+    	    	<a class="btn-floating btn-gplus mx-1" href="https://plus.google.com/">
+    	      		<i class="fab fa-google-plus-g"> </i>
+    	    	</a>
+    	  	</li>
+    	  	<li class="list-inline-item">
+    	    	<a class="btn-floating btn-li mx-1" href="https://www.linkedin.com/">
+    	      		<i class="fab fa-linkedin-in"> </i>
+    	    	</a>
+    	  	</li>
+    	</ul>
+    	<hr>
+    	<!-- Réalisation -->
+    	<div class="footer text-center py-3">Site web réalisé par L.Vialatoux & A.Dulhoste
+    	</div>
+	</footer>
+	<!-- Fin footer -->
+
+    <!-- Optional JavaScript: jQuery first, then Popper.js (popups), then Bootstrap JS -->
+	<script src="./lib/js/jquery-3.3.1.min.js"></script>
+	<script src="./lib/js/popper.min.js"></script>
+	<script src="./lib/js/bootstrap.min.js"></script>
+
+	
+
+
+	 <!--
+		C'est ici que vous insérez votre code JavaScript.
+	 -->
+	<script>
+		function deroulerAffichage(){
+			btnCreer = document.getElementById("btnCreer");
+			divCreer = document.getElementById("Creer");
+			divCreer.style.visibility="hidden";
+			btnCreer.style.visibility="hidden";
+		}
+		
+	</script>
+	
+  </body>
+</html>
