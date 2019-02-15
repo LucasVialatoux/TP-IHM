@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./lib/css/bootstrap.min.css">
-	  <link rel="stylesheet" href="./lib/css/page.css">
+	  <link rel="stylesheet" href="./lib/css/style.css">
     <!-- Font Awesome -->
   	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
   	<!-- Bootstrap core CSS -->
@@ -41,72 +41,76 @@
 	</nav>
 	<!-- Fin menu -->
 	<div id="creer" class="collapse">
-		
-	
-	 <div class="container pb-5" style="padding-bottom:400px;">
-	 	<div class="row">
-	 		<form>
-			 	<div class="form-group">
-			    	<label for="QCMname">Nom du nouveau QCM</label>
-			    	<input type="text" class="form-control" id="QCMname" aria-describedby="qcmHelp" placeholder="Entrer le nom du QCM">
-			    	<small id="qcmHelp" class="form-text text-muted">Ce nom vous servira à retrouver votre QCM parmi la liste des QCMs existant.</small>
-			  	</div>
-			  	<button type="submit" class="btn btn-primary" onclick="setQCMname();" data-toggle="collapse" href="#newQCM">Créer le QCM</button>
-			</form>
-	 	</div>
-		 <div id="newQCM" class="collapse">
-		 <!-- Default form contact -->
-			<form class="text-center border border-light p-4">
+		<div class="container pb-5">
+		 	<div class="row">
+		 		<form onsubmit="setQCMname();return false;">
+				 	<div class="form-group">
+				    	<label for="QCMname">Nom du nouveau QCM</label>
+				    	<input type="text" class="form-control" id="QCMname" aria-describedby="qcmHelp" placeholder="Entrer le nom du QCM">
+				    	<small id="qcmHelp" class="form-text text-muted">Ce nom vous servira à retrouver votre QCM parmi la liste des QCMs existant.</small>
+				  	</div>
+				  	<button type="button" class="btn btn-primary" onclick="setQCMname();" data-toggle="collapse" href="#newQCM">Créer le QCM</button>
+				</form>
+		 	</div>
+			<div id="newQCM" >
+			 <!-- Default form contact -->
+				<form class="text-center border border-light p-4">
 
-			    <p class="h4 mb-4" id="nomQCMFinal"></p>
+				    <p class="h4 mb-4" id="nomQCMFinal"></p>
 
-			    <!-- Nom question -->
-			    <input type="text" id="intituleQuestion" class="form-control mb-4" placeholder="Intitulé de la question">
+				    <!-- Nom question -->
+				    <input type="text" id="intituleQuestion" class="form-control mb-4" placeholder="Intitulé de la question" onchange="ajouterQuestion();">
 
-			    <!-- Réponses possible -->
-			    <input type="text" id="Réponse1" class="form-control mb-4" placeholder="1ère réponse possible">
-			    <input type="text" id="Réponse2" class="form-control mb-4" placeholder="2ème réponse possible">
-			    <!-- Subject -->
-			    <label>Réponse correcte</label>
-			    <select class="browser-default custom-select mb-4">
-			        <option value="" disabled>Choisissez la bonne réponse à la question</option>
-			        <option value="1" selected>Réponse 1</option>
-			        <option value="2">Réponse 2</option>
-			        <option value="3">Réponse 3</option>
-			        <option value="4">Réponse 4</option>
-			    </select>
+				    <!-- Réponses possible -->
+				    <div class="reponses">
+					    <div class="row rep">
+					    	<div class="col-lg-10">
+					    		<input type="text" id="rep1" class="form-control mb-4" placeholder="Réponse possible" onchange="ajouterQuestion();">
+					    	</div>
+						    <div class="col-lg-1 pt-1">
+						    	<i class="fas fa-plus" onclick="ajouterReponse();"></i>
+						    </div>
+						    <div class="col-lg-1 pt-1">
+						    	<i class="far fa-trash-alt" onclick="supprimerReponse();"></i>
+						    </div>
+						</div>
+						<div class="row rep">
+					    	<div class="col-lg-10">
+					    		<input type="text" id="rep1" class="form-control mb-4" placeholder="Réponse possible" onchange="ajouterQuestion();">
+					    	</div>
+						    <div class="col-lg-1 pt-1">
+						    	<i class="fas fa-plus" onclick="ajouterReponse();"></i>
+						    </div>
+						    <div class="col-lg-1 pt-1">
+						    	<i class="far fa-trash-alt" onclick="supprimerReponse();"></i>
+						    </div>
+						</div>
+					</div>
+					
+				    
+				    <!-- Cocher réponses correctes -->
+				    <label>Cochez la/les réponse(s) correcte(s)</label>
 
-			    <!-- Message -->
-			    <div class="form-group">
-			        <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
-			    </div>
+				    <!-- Réponses à cocher-->
+				    <div id="cocheReponse">
+						<div id="repCochezAcloner" class="custom-control custom-checkbox custom-control-inline">
+						  <input type="checkbox" class="custom-control-input" id="repJuste1">
+						  <label class="custom-control-label" for="repJuste1">1</label>
+						</div>
+						<div class="custom-control custom-checkbox custom-control-inline">
+						  <input type="checkbox" class="custom-control-input" id="repJuste2">
+						  <label class="custom-control-label" for="repJuste2">2</label>
+						</div>
+					</div>
 
-			    <!-- Copy -->
-			    <div class="custom-control custom-checkbox mb-4">
-			        <input type="checkbox" class="custom-control-input" id="defaultContactFormCopy">
-			        <label class="custom-control-label" for="defaultContactFormCopy">Send me a copy of this message</label>
-			    </div>
+				    <!-- Ajout de la question -->
+				    <button class="btn btn-info btn-block" type="submit">Ajouter cette question</button>
 
-			    <!-- Send button -->
-			    <button class="btn btn-info btn-block" type="submit">Ajouter cette question</button>
-
-			</form>
-			<!-- Default form contact -->
-		</div>
-		<div class="row">
-			test
-		</div>
-		<div class="row">
-			test
-		</div>
-		<div class="row">
-			test
+				</form>
+				<!-- Default form contact -->
+			</div>
 		</div>
 	</div>
-	</div>
-
-
-</div>
 	<div id="affichage" class="collapse">
 		<div class="card card-body">
     		QCM existant
@@ -220,6 +224,29 @@
 		function setQCMname(){
 			nomQCM = document.getElementById("QCMname").value;
 			document.getElementById("nomQCMFinal").textContent=nomQCM;
+		}
+
+		function ajouterReponse(){
+			//Clonage de l'élément et ajout à la fin du noeud
+			node=document.getElementsByClassName("reponses")[0];
+			rep=document.getElementsByClassName("row rep")[1];
+			var repClone = rep.cloneNode(true);
+			node.appendChild(repClone);
+
+			//Ajout case à cocher
+			nodeCoche=document.getElementById("cocheReponse");
+			coche = document.getElementById("repCochezAcloner");
+			var cocheClone = coche.cloneNode(true);
+			nodeCoche.appendChild(cocheClone);
+
+			test = document.getElementsByClassName("custom-control-label");
+			nbrep=test.length;
+			nbrepMoins=nbrep-1;
+			test[nbrepMoins].textContent=nbrep;
+		}
+
+		function supprimerReponse(){
+
 		}
 		
 	</script>
