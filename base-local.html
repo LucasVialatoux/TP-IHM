@@ -59,7 +59,7 @@
 				    <p class="h4 mb-4" id="nomQCMFinal"></p>
 
 				    <!-- Nom question -->
-				    <input type="text" id="intituleQuestion" class="form-control mb-4" placeholder="Intitulé de la question" onchange="ajouterQuestion();">
+				    <input type="text" id="intituleQuestion" class="form-control mb-4" placeholder="Intitulé de la question">
 
 				    <!-- Réponses possible -->
 				    <div class="reponses">
@@ -104,7 +104,7 @@
 					</div>
 
 				    <!-- Ajout de la question -->
-				    <button class="btn btn-info btn-block" type="submit">Ajouter cette question</button>
+				    <button class="btn btn-info btn-block" type="button" onclick="ajouterQuestion();">Ajouter cette question</button>
 
 				</form>
 				<!-- Default form contact -->
@@ -116,34 +116,12 @@
 				    <div class="table-responsive">
 					    <table class="table">
 					      	<tbody>
-					        	<tr>
+					        	<tr class="RepQCM">
 					          		<td>Réponse 1</td>
 					          		<td>La réponse</td>
 					          		<td></td>
 					        	</tr>
-					        	<tr class="table-success">
-					          		<td>Réponse 2</td>
-					          		<td>La réponse correcte</td>
-					          		<td></td>
-					        	</tr>
-					        	<tr>
-					          		<td>Réponse 3</td>
-					          		<td>La réponse</td>
-					          		<td></td>
-					        	</tr>
-					      	</tbody>
-					    </table>
-					</div>
-					<h5 class="card-title">Question 2 <i id="quest2" class="far fa-trash-alt float-right" onclick="supprimerQuestion(this.id);"></i></h5>
-				    <div class="table-responsive">
-					    <table class="table">
-					      	<tbody>
-					        	<tr>
-					          		<td>Réponse 1</td>
-					          		<td>La réponse</td>
-					          		<td></td>
-					        	</tr>
-					        	<tr class="table-success">
+					        	<tr class="RepQCM">
 					          		<td>Réponse 2</td>
 					          		<td>La réponse correcte</td>
 					          		<td></td>
@@ -303,7 +281,6 @@
 
 		function supprimerReponse(id){
 			nbreRep = document.getElementsByClassName("custom-control-label").length;
-			console.log(id);
 			if(nbreRep>2){
 				document.getElementsByClassName("row rep")[id.substring(3)-1].remove();
 				document.getElementsByClassName("custom-control custom-checkbox custom-control-inline")[nbreRep-1].remove();
@@ -312,8 +289,40 @@
 			}
 		}
 
-		function ajouterQuestion(){
+		nbreQuestion =0;
 
+		function ajouterQuestion(){
+			nbreQuestion =+1;
+			if (nbreQuestion == 1){
+
+			}
+			//set nom QCM
+			nomQCM = document.getElementById("QCMname").value;
+			document.getElementsByClassName("card-header")[0].innerText= nomQCM;
+
+			//set nom Question
+			nomQuestion = document.getElementById("intituleQuestion").value;
+			document.getElementsByClassName("card-title")[0].innerText = nomQuestion;
+
+			//Compter nombre réponses
+			nbreRep = document.getElementsByClassName("row rep").length;
+
+			//test qu'on a bien un minimum de 2 questions
+			if (nbreRep >=2){
+				for (i=0;i<nbreRep;i++){
+					console.log("if passé");
+					nomRep=document.getElementsByClassName("form-control mb-4")[i+1].value;
+					document.getElementsByClassName("RepQCM")[i].getElementsByTagName("td")[1].innerText=nomRep;
+					//test si cette réponse est une réponse correcte
+					booljuste = document.getElementsByClassName("custom-control-input")[i].checked
+					if (booljuste == true){
+						document.getElementsByClassName("RepQCM")[i].className = "RepQCM table-success";
+					}
+				}
+			} else {
+				console.log("else passé");
+				alert("2 réponses minimum !");
+			}
 		}
 		
 	</script>
