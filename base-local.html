@@ -126,11 +126,6 @@
 					          		<td>La réponse correcte</td>
 					          		<td></td>
 					        	</tr>
-					        	<tr>
-					          		<td>Réponse 3</td>
-					          		<td>La réponse</td>
-					          		<td></td>
-					        	</tr>
 					      	</tbody>
 					    </table>
 					</div>
@@ -255,14 +250,16 @@
 			document.getElementById("nomQCMFinal").textContent=nomQCM;
 		}
 
+		nbreReponse = 2;
 		function ajouterReponse(){
+			nbreReponse+=1;
 			//Clonage de l'élément et ajout à la fin du noeud
 			node=document.getElementsByClassName("reponses")[0];
 			rep=document.getElementsByClassName("row rep")[1];
 			var repClone = rep.cloneNode(true);
 			//Ajout id différent pour le clone
 			nbre=document.getElementsByClassName("row rep").length+1
-			repClone.getElementsByClassName("col-lg-1 pt-1")[1].getElementsByClassName("far fa-trash-alt")[0].id="rep"+nbre;
+			repClone.getElementsByClassName("col-lg-1 pt-1")[1].getElementsByClassName("far fa-trash-alt")[0].id="rep"+nbreReponse;
 			//On s'assure qu'aucune réponse n'est clonée
 			repClone.getElementsByClassName("form-control mb-4")[0].value="";
 			node.appendChild(repClone);
@@ -271,19 +268,22 @@
 			nodeCoche=document.getElementById("cocheReponse");
 			coche = document.getElementsByClassName("custom-control custom-checkbox custom-control-inline")[0];
 			var cocheClone = coche.cloneNode(true);
+			//modifier ID + valeur for du label + non coché
+			cocheClone.getElementsByClassName("custom-control-input")[0].checked=false;
+			cocheClone.getElementsByClassName("custom-control-input")[0].id="repJuste"+nbreReponse
+			cocheClone.getElementsByClassName("custom-control-label")[0].htmlFor="repJuste"+nbreReponse
 			nodeCoche.appendChild(cocheClone);
 			//Ajout et calcul numéro rép
 			cocheName = document.getElementsByClassName("custom-control-label");
-			nbrep=cocheName.length;
-			nbrepMoins=nbrep-1;
-			cocheName[nbrepMoins].textContent=nbrep;
+			nbrepMoins=nbreReponse-1;
+			cocheName[nbrepMoins].textContent=nbreReponse;
 		}
 
 		function supprimerReponse(id){
-			nbreRep = document.getElementsByClassName("custom-control-label").length;
-			if(nbreRep>2){
+			nbreReponse=nbreReponse-1;
+			if(nbreReponse>2){
 				document.getElementsByClassName("row rep")[id.substring(3)-1].remove();
-				document.getElementsByClassName("custom-control custom-checkbox custom-control-inline")[nbreRep-1].remove();
+				document.getElementsByClassName("custom-control custom-checkbox custom-control-inline")[nbreReponse-1].remove();
 			} else {
 				alert("2 réponses minimum !");
 			}
