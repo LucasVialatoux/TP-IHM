@@ -15,4 +15,9 @@
 	margin: 0 auto;
     max-width: 40rem;
     margin-top: 1rem;
+    visibility: hidden;
+}
+
+#newQCM{
+	visibility: hidden;
 }

@@ -28,13 +28,16 @@
 	  	<div class="collapse navbar-collapse" id="navbarText">
 	    	<ul class="navbar-nav mr-auto">
 	      		<li class="nav-item active">
-	        		<a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
+	        		<a class="nav-link" href="#" onclick="menu(1);">Accueil <span class="sr-only">(current)</span></a>
 	      		</li>
 	      		<li class="nav-item">
-	        		<a class="nav-link" data-toggle="collapse" href="#creer">Créer QCM</a>
+	        		<a class="nav-link" href="#" onclick="menu(2);">Créer QCM</a>
 	      		</li>
 	      		<li class="nav-item">
-	        		<a class="nav-link" data-toggle="collapse" href="#affichage">Afficher QCM</a>
+	        		<a class="nav-link" href="#" onclick="menu(3);">Afficher QCM</a>
+	      		</li>
+	      		<li class="nav-item">
+	        		<a class="nav-link" href="#" onclick="menu(4);">Nous contacter</a>
 	      		</li>
 	    	</ul>
 	  </div>
@@ -42,14 +45,15 @@
 	<!-- Fin menu -->
 	<div id="creer" class="collapse">
 		<div class="container pb-5">
-		 	<div class="row">
+		 	<div class="row" id="formCreation">
 		 		<form onsubmit="setQCMname();return false;">
 				 	<div class="form-group">
 				    	<label for="QCMname">Nom du nouveau QCM</label>
 				    	<input type="text" class="form-control" id="QCMname" aria-describedby="qcmHelp" placeholder="Entrer le nom du QCM">
-				    	<small id="qcmHelp" class="form-text text-muted">Ce nom vous servira à retrouver votre QCM parmi la liste des QCMs existant.</small>
 				  	</div>
-				  	<button type="button" class="btn btn-primary" onclick="setQCMname();" data-toggle="collapse" href="#newQCM">Créer le QCM</button>
+				  	<button type="button" class="btn btn-primary" onclick="setQCMname();" data-toggle="tooltip" data-placement="top" title="Ce nom vous servira à retrouver votre QCM parmi la liste des QCMs existant">
+  					Créer le QCM
+					</button>
 				</form>
 		 	</div>
 			<div id="newQCM" >
@@ -71,7 +75,7 @@
 						    	<i class="fas fa-plus" onclick="ajouterReponse();"></i>
 						    </div>
 						    <div class="col-lg-1 pt-1">
-						    	<i id="rep1" class="far fa-trash-alt" onclick="supprimerReponse(this.id);"></i>
+						    	<i id="rep1" class="far fa-trash-alt" onclick="supprimerReponse(this.parentNode);"></i>
 						    </div>
 						</div>
 						<div class="row rep">
@@ -82,7 +86,7 @@
 						    	<i class="fas fa-plus" onclick="ajouterReponse();"></i>
 						    </div>
 						    <div class="col-lg-1 pt-1">
-						    	<i id="rep2" class="far fa-trash-alt" onclick="supprimerReponse(this.id);"></i>
+						    	<i id="rep2" class="far fa-trash-alt" onclick="supprimerReponse(this.parentNode);"></i>
 						    </div>
 						</div>
 					</div>
@@ -189,6 +193,105 @@
 		</table>
 	</div>
 
+	<div id="contactRetour" class="collapse">
+		<form class="text-center border border-light p-5">
+
+    <p class="h4 mb-4">Contactez-nous</p>
+
+    <!-- Nom de famille -->
+    <div class="row">
+    	<div class="col-lg-2 pt-2">
+    		<label for="contactName" lass="form-control mb-2">Nom</label>
+    	</div>
+	    <div class="col-lg-10">
+	    	<input type="text" id="contactName" class="form-control mb-4" placeholder="Nom">
+	    </div>
+    </div>
+    <!-- Prénom -->
+    <div class="row">
+    	<div class="col-lg-2 pt-2">
+    		<label for="contactFirstName">Prénom</label>
+    	</div>
+	    <div class="col-lg-10">
+	    	<input type="text" id="contactFirstName" class="form-control mb-4" placeholder="Prénom">
+	    </div>
+    </div>
+    <!-- Email -->
+    <div class="row">
+    	<div class="col-lg-2 pt-2">
+    		<label for="contactEmail">E-mail</label>
+    	</div>
+	    <div class="col-lg-10">
+	    	<input type="email" id="contactEmail" class="form-control mb-4" placeholder="E-mail">
+	    </div>
+    </div>
+    <!-- Adresse -->
+    <div class="row">
+    	<div class="col-lg-2 pt-2">
+    		<label for="contactAdresse">Adresse</label>
+    	</div>
+	    <div class="col-lg-10">
+	    	<input type="address" id="contactAdresse" class="form-control mb-4" placeholder="Adresse">
+	    </div>
+    </div>
+    <!-- Téléphone -->
+    <div class="row">
+    	<div class="col-lg-2 pt-2">
+    		<label for="contactTel">Téléphone</label>
+    	</div>
+	    <div class="col-lg-10">
+	    	<input type="tel" name="phone" id="contactTel" class="form-control mb-4" placeholder="06.12.34.56.78" required autocomplete="tel">
+	    </div>
+    </div>
+
+    <!-- Votre retour -->
+    <div class="row">
+    	<div class="col-lg-2 pt-2">
+    		<label for="contactText">Votre retour</label>
+    	</div>
+	    <div class="col-lg-10">
+	    	<input type="text" id="contactText" class="form-control mb-4" placeholder="Décrivez nous votre retour">
+	    </div>
+    </div>
+    
+
+    <div class="d-flex justify-content-around">
+        <div>
+            <!-- Recevoir une copie -->
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="contactRecevoirCopie">
+                <label class="custom-control-label" for="contactRecevoirCopie">Recevoir une copie de ce retour par mail</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign in button -->
+    <button class="btn btn-info btn-block my-4" type="submit">Envoyer</button>
+
+    <!-- Register -->
+    <p>Not a member?
+        <a href="">Register</a>
+    </p>
+
+    <!-- Social login -->
+    <p>or sign in with:</p>
+
+    <a type="button" class="light-blue-text mx-2">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a type="button" class="light-blue-text mx-2">
+        <i class="fab fa-twitter"></i>
+    </a>
+    <a type="button" class="light-blue-text mx-2">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+    <a type="button" class="light-blue-text mx-2">
+        <i class="fab fa-github"></i>
+    </a>
+
+</form>
+<!-- Default form login -->
+	</div>
 	
 	
 	
@@ -238,6 +341,27 @@
 		C'est ici que vous insérez votre code JavaScript.
 	 -->
 	<script>
+		function menu(id){
+			if (id==1) {
+				$('#creer').hide();
+				$('#affichage').hide();
+				$('#contactRetour').hide();
+			} else if (id==2){
+				$('#creer').show();
+				$('#affichage').hide();
+				$('#contactRetour').hide();
+			} else if (id==3){
+				$('#creer').hide();
+				$('#affichage').show();
+				$('#contactRetour').hide();
+			} else if (id==4){
+				$('#creer').hide();
+				$('#affichage').hide();
+				$('#contactRetour').show();
+				
+			}
+		}
+
 		function deroulerAffichage(){
 			btnCreer = document.getElementById("btnCreer");
 			divCreer = document.getElementById("Creer");
@@ -248,6 +372,8 @@
 		function setQCMname(){
 			nomQCM = document.getElementById("QCMname").value;
 			document.getElementById("nomQCMFinal").textContent=nomQCM;
+			document.getElementById("newQCM").style.visibility="visible";
+			document.getElementById("formCreation").style.visibility="hidden";
 		}
 
 		nbreReponse = 2;
@@ -279,11 +405,11 @@
 			cocheName[nbrepMoins].textContent=nbreReponse;
 		}
 
-		function supprimerReponse(id){
-			nbreReponse=nbreReponse-1;
+		function supprimerReponse(nodePar){
 			if(nbreReponse>2){
-				document.getElementsByClassName("row rep")[id.substring(3)-1].remove();
+				nodePar.parentNode.remove();
 				document.getElementsByClassName("custom-control custom-checkbox custom-control-inline")[nbreReponse-1].remove();
+				nbreReponse=nbreReponse-1;
 			} else {
 				alert("2 réponses minimum !");
 			}
@@ -307,23 +433,30 @@
 			//Compter nombre réponses
 			nbreRep = document.getElementsByClassName("row rep").length;
 
+			document.getElementById("QCMcree").style.visibility="visible";
+
 			//test qu'on a bien un minimum de 2 questions
 			if (nbreRep >=2){
 				for (i=0;i<nbreRep;i++){
-					console.log("if passé");
 					nomRep=document.getElementsByClassName("form-control mb-4")[i+1].value;
 					document.getElementsByClassName("RepQCM")[i].getElementsByTagName("td")[1].innerText=nomRep;
 					//test si cette réponse est une réponse correcte
 					booljuste = document.getElementsByClassName("custom-control-input")[i].checked
 					if (booljuste == true){
 						document.getElementsByClassName("RepQCM")[i].className = "RepQCM table-success";
+					} else {
+						document.getElementsByClassName("RepQCM")[i].className = "RepQCM";
 					}
 				}
 			} else {
-				console.log("else passé");
 				alert("2 réponses minimum !");
 			}
 		}
+
+		//Activer les tooltip
+		$(function () {
+  			$('[data-toggle="tooltip"]').tooltip()
+		})
 		
 	</script>
 	
