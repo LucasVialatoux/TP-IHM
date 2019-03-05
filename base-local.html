@@ -74,7 +74,7 @@
 
 	<div id="creer" class="collapse">
 		<div class="container pb-5">
-		 	<div class="row" id="formCreation">
+		 	<div class="collapse show row" id="formCreation">
 		 		<form onsubmit="setQCMname();return false;">
 				 	<div class="form-group">
 				    	<label for="QCMname">Nom du nouveau QCM</label>
@@ -85,7 +85,7 @@
 					</button>
 				</form>
 		 	</div>
-			<div id="newQCM" >
+			<div id="newQCM" class="collapse pt-4">
 			 <!-- Formulaire  ajout question -->
 				<form class="text-center border border-light p-4">
 
@@ -144,7 +144,7 @@
 			</div>
 
 			<!-- Prévisualisation en direct du QCM créé -->
-			<div id="QCMcree" class="card border mb-3">
+			<div id="QCMcree" class="collapse card border mb-3">
 			  	<div class="card-header">Nom QCM</div>
 				<div class="card-body text">
 				    <h5 class="card-title">Question 1 <i id="quest1" class="far fa-trash-alt float-right" onclick="supprimerQuestion(this.id);"></i></h5>
@@ -389,8 +389,8 @@
 		function setQCMname(){
 			nomQCM = document.getElementById("QCMname").value;
 			document.getElementById("nomQCMFinal").textContent=nomQCM;
-			document.getElementById("newQCM").style.visibility="visible";
-			document.getElementById("formCreation").style.visibility="hidden";
+			$('#newQCM').show();
+			$('#formCreation').hide();
 		}
 
 		nbreReponse = 2;
@@ -435,10 +435,10 @@
 		nbreQuestion =0;
 
 		function ajouterQuestion(){
-			nbreQuestion =+1;
-			if (nbreQuestion == 1){
-
+			if (nbreQuestion < 1){
+				$('#QCMcree').show();
 			}
+			nbreQuestion =+1;
 			//set nom QCM
 			nomQCM = document.getElementById("QCMname").value;
 			document.getElementsByClassName("card-header")[0].innerText= nomQCM;
@@ -450,7 +450,7 @@
 			//Compter nombre réponses
 			nbreRep = document.getElementsByClassName("row rep").length;
 
-			document.getElementById("QCMcree").style.visibility="visible";
+
 
 			//test qu'on a bien un minimum de 2 questions
 			if (nbreRep >=2){
