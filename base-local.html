@@ -28,16 +28,16 @@
 	  	<div class="collapse navbar-collapse" id="navbarText">
 	    	<ul class="navbar-nav mr-auto">
 	      		<li class="nav-item active">
-	        		<a class="nav-link" href="#" onclick="menu(1);">Accueil <span class="sr-only">(current)</span></a>
+	        		<a class="nav-link" onclick="menu(1,this.parentNode);">Accueil </a>
 	      		</li>
 	      		<li class="nav-item">
-	        		<a class="nav-link" href="#" onclick="menu(2);">Créer QCM</a>
+	        		<a class="nav-link" onclick="menu(2,this.parentNode);">Créer QCM</a>
 	      		</li>
 	      		<li class="nav-item">
-	        		<a class="nav-link" href="#" onclick="menu(3);">Afficher QCM</a>
+	        		<a class="nav-link" onclick="menu(3,this.parentNode);">Afficher QCM</a>
 	      		</li>
 	      		<li class="nav-item">
-	        		<a class="nav-link" href="#" onclick="menu(4);">Nous contacter</a>
+	        		<a class="nav-link" onclick="menu(4,this.parentNode);">Nous contacter</a>
 	      		</li>
 	    	</ul>
 	  </div>
@@ -57,7 +57,7 @@
 				</form>
 		 	</div>
 			<div id="newQCM" >
-			 <!-- Default form contact -->
+			 <!-- Formulaire  ajout question -->
 				<form class="text-center border border-light p-4">
 
 				    <p class="h4 mb-4" id="nomQCMFinal"></p>
@@ -111,8 +111,10 @@
 				    <button class="btn btn-info btn-block" type="button" onclick="ajouterQuestion();">Ajouter cette question</button>
 
 				</form>
-				<!-- Default form contact -->
+				<!-- Fin formulaire ajout question -->
 			</div>
+
+			<!-- Prévisualisation en direct du QCM créé -->
 			<div id="QCMcree" class="card border mb-3">
 			  	<div class="card-header">Nom QCM</div>
 				<div class="card-body text">
@@ -193,106 +195,83 @@
 		</table>
 	</div>
 
+	<!-- Formulaire de contact -->
 	<div id="contactRetour" class="collapse">
 		<form class="text-center border border-light p-5">
 
-    <p class="h4 mb-4">Contactez-nous</p>
+    		<p class="h4 mb-4">Contactez-nous</p>
 
-    <!-- Nom de famille -->
-    <div class="row">
-    	<div class="col-lg-2 pt-2">
-    		<label for="contactName" lass="form-control mb-2">Nom</label>
-    	</div>
-	    <div class="col-lg-10">
-	    	<input type="text" id="contactName" class="form-control mb-4" placeholder="Nom">
-	    </div>
-    </div>
-    <!-- Prénom -->
-    <div class="row">
-    	<div class="col-lg-2 pt-2">
-    		<label for="contactFirstName">Prénom</label>
-    	</div>
-	    <div class="col-lg-10">
-	    	<input type="text" id="contactFirstName" class="form-control mb-4" placeholder="Prénom">
-	    </div>
-    </div>
-    <!-- Email -->
-    <div class="row">
-    	<div class="col-lg-2 pt-2">
-    		<label for="contactEmail">E-mail</label>
-    	</div>
-	    <div class="col-lg-10">
-	    	<input type="email" id="contactEmail" class="form-control mb-4" placeholder="E-mail">
-	    </div>
-    </div>
-    <!-- Adresse -->
-    <div class="row">
-    	<div class="col-lg-2 pt-2">
-    		<label for="contactAdresse">Adresse</label>
-    	</div>
-	    <div class="col-lg-10">
-	    	<input type="address" id="contactAdresse" class="form-control mb-4" placeholder="Adresse">
-	    </div>
-    </div>
-    <!-- Téléphone -->
-    <div class="row">
-    	<div class="col-lg-2 pt-2">
-    		<label for="contactTel">Téléphone</label>
-    	</div>
-	    <div class="col-lg-10">
-	    	<input type="tel" name="phone" id="contactTel" class="form-control mb-4" placeholder="06.12.34.56.78" required autocomplete="tel">
-	    </div>
-    </div>
+    		<!-- Nom de famille -->
+    		<div class="row">
+    			<div class="col-lg-2 pt-2">
+    				<label for="contactName" lass="form-control mb-2">Nom</label>
+    			</div>
+			    <div class="col-lg-10">
+			    	<input type="text" id="contactName" class="form-control mb-4" placeholder="Nom" required autocomplete="family-name">
+			    </div>
+    		</div>
+    		<!-- Prénom -->
+    		<div class="row">
+    			<div class="col-lg-2 pt-2">
+    				<label for="contactFirstName">Prénom</label>
+    			</div>
+			    <div class="col-lg-10">
+			    	<input type="text" id="contactFirstName" class="form-control mb-4" placeholder="Prénom" required autocomplete="given-name">
+			    </div>
+    		</div>
+    		<!-- Email -->
+    		<div class="row">
+    			<div class="col-lg-2 pt-2">
+    				<label for="contactEmail">E-mail</label>
+    			</div>
+			    <div class="col-lg-10">
+			    	<input type="email" id="contactEmail" class="form-control mb-4" placeholder="E-mail" required autocomplete="email">
+			    </div>
+    		</div>
+    		<!-- Adresse -->
+    		<div class="row">
+    			<div class="col-lg-2 pt-2">
+    				<label for="contactAdresse">Adresse</label>
+    			</div>
+			    <div class="col-lg-10">
+			    	<input type="address" id="contactAdresse" class="form-control mb-4" placeholder="Adresse" required autocomplete="street-address">
+			    </div>
+    		</div>
+    		<!-- Téléphone -->
+    		<div class="row">
+    			<div class="col-lg-2 pt-2">
+    				<label for="contactTel">Téléphone</label>
+    			</div>
+			    <div class="col-lg-10">
+			    	<input type="tel" name="phone" id="contactTel" class="form-control mb-4" placeholder="06.12.34.56.78" required autocomplete="tel">
+			    </div>
+    		</div>
+		
+    		<!-- Votre retour -->
+    		<div class="row">
+    			<div class="col-lg-2 pt-2">
+    				<label for="contactText">Votre retour</label>
+    			</div>
+			    <div class="col-lg-10">
+			    	<input type="text" id="contactText" class="form-control mb-4" placeholder="Décrivez nous votre retour">
+			    </div>
+    		</div>
+    		
+			<!-- Recevoir une copie -->
+    		<div class="d-flex justify-content-around">
+    		    <div>
+    		        <div class="custom-control custom-checkbox">
+    		            <input type="checkbox" class="custom-control-input" id="contactRecevoirCopie">
+    		            <label class="custom-control-label" for="contactRecevoirCopie">Recevoir une copie de ce retour par mail</label>
+    		        </div>
+    		    </div>
+    		</div>
+    		<!-- Bouton envoyer -->
+    		<button class="btn btn-info btn-block my-4" type="submit">Envoyer</button>
 
-    <!-- Votre retour -->
-    <div class="row">
-    	<div class="col-lg-2 pt-2">
-    		<label for="contactText">Votre retour</label>
-    	</div>
-	    <div class="col-lg-10">
-	    	<input type="text" id="contactText" class="form-control mb-4" placeholder="Décrivez nous votre retour">
-	    </div>
-    </div>
-    
-
-    <div class="d-flex justify-content-around">
-        <div>
-            <!-- Recevoir une copie -->
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="contactRecevoirCopie">
-                <label class="custom-control-label" for="contactRecevoirCopie">Recevoir une copie de ce retour par mail</label>
-            </div>
-        </div>
-    </div>
-
-    <!-- Sign in button -->
-    <button class="btn btn-info btn-block my-4" type="submit">Envoyer</button>
-
-    <!-- Register -->
-    <p>Not a member?
-        <a href="">Register</a>
-    </p>
-
-    <!-- Social login -->
-    <p>or sign in with:</p>
-
-    <a type="button" class="light-blue-text mx-2">
-        <i class="fab fa-facebook-f"></i>
-    </a>
-    <a type="button" class="light-blue-text mx-2">
-        <i class="fab fa-twitter"></i>
-    </a>
-    <a type="button" class="light-blue-text mx-2">
-        <i class="fab fa-linkedin-in"></i>
-    </a>
-    <a type="button" class="light-blue-text mx-2">
-        <i class="fab fa-github"></i>
-    </a>
-
-</form>
-<!-- Default form login -->
+		</form>
 	</div>
-	
+	<!-- Fin formulaire de contact -->
 	
 	
 
@@ -334,30 +313,35 @@
 	<script src="./lib/js/popper.min.js"></script>
 	<script src="./lib/js/bootstrap.min.js"></script>
 
-	
-
-
-	 <!--
-		C'est ici que vous insérez votre code JavaScript.
-	 -->
+	<!-- Javascript code -->
 	<script>
-		function menu(id){
+		function menu(id,parNode){
+			nbparent=parNode.parentNode.childNodes.length;
+			for (i=0;i<nbparent;i++){
+				if (i%2==1){
+					parNode.parentNode.childNodes[i].className="nav-item";
+				}
+			}
 			if (id==1) {
 				$('#creer').hide();
 				$('#affichage').hide();
 				$('#contactRetour').hide();
+				parNode.className="nav-item active";
 			} else if (id==2){
 				$('#creer').show();
 				$('#affichage').hide();
 				$('#contactRetour').hide();
+				parNode.className="nav-item active";
 			} else if (id==3){
 				$('#creer').hide();
 				$('#affichage').show();
 				$('#contactRetour').hide();
+				parNode.className="nav-item active";
 			} else if (id==4){
 				$('#creer').hide();
 				$('#affichage').hide();
 				$('#contactRetour').show();
+				parNode.className="nav-item active";
 				
 			}
 		}
@@ -459,6 +443,6 @@
 		})
 		
 	</script>
-	
+	<!-- Fin Javascript -->
   </body>
 </html>
