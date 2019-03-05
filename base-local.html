@@ -43,6 +43,35 @@
 	  </div>
 	</nav>
 	<!-- Fin menu -->
+		
+		<!-- home wrapper -->
+		<div class="home-wrapper" id="home">
+			<!-- Background Image -->
+			<div class="bg-img" style="background-image: url('./lib/img/background1.jpg');">
+				<div class="overlay"></div>
+			</div>
+			<!-- /Background Image -->
+			<div class="container">
+				<div class="row">
+
+					<!-- home content -->
+					<div class="col-md-10 col-md-offset-1">
+						<div class="home-content">
+							<h1 class="white-text">Création de QCM</h1>
+							<p class="white-text">Nous créons des QCMs depuis de longues années, faites nous confiance !
+							</p>
+							<button class="white-btn" onclick="menu(2,document.getElementsByClassName('navbar-nav mr-auto')[0].childNodes[3]);">Créez votre premier QCM !</button>
+							<button class="main-btn" onclick="menu(4,document.getElementsByClassName('navbar-nav mr-auto')[0].childNodes[7]);">Contactez-nous !</button>
+						</div>
+					</div>
+					<!-- /home content -->
+
+				</div>
+			</div>
+		</div>
+		<!-- /home wrapper -->
+	
+
 	<div id="creer" class="collapse">
 		<div class="container pb-5">
 		 	<div class="row" id="formCreation">
@@ -323,21 +352,25 @@
 				}
 			}
 			if (id==1) {
+				$('#home').show();
 				$('#creer').hide();
 				$('#affichage').hide();
 				$('#contactRetour').hide();
 				parNode.className="nav-item active";
 			} else if (id==2){
+				$('#home').hide();
 				$('#creer').show();
 				$('#affichage').hide();
 				$('#contactRetour').hide();
 				parNode.className="nav-item active";
 			} else if (id==3){
+				$('#home').hide();
 				$('#creer').hide();
 				$('#affichage').show();
 				$('#contactRetour').hide();
 				parNode.className="nav-item active";
 			} else if (id==4){
+				$('#home').hide();
 				$('#creer').hide();
 				$('#affichage').hide();
 				$('#contactRetour').show();
