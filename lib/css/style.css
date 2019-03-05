@@ -1,8 +1,22 @@
 .plusOuMoins{
     font-size:15px;
     font-weight: 900;
+    cursor: pointer;
 }
 
+.titre {
+    position: absolute;
+    padding-top: 10px;
+}
+.boutonRetour {
+    float: right;
+}
+.hauteurCadre {
+   height: 70px;
+}
+.Reponse{
+    width: 100px;;
+}
 #QCMcree{
 	margin: 0 auto;
     max-width: 40rem;
