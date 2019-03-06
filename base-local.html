@@ -34,7 +34,7 @@
 	        		<a class="nav-link" onclick="menu(2,this.parentNode);">Créer QCM</a>
 	      		</li>
 	      		<li class="nav-item">
-	        		<a class="nav-link" onclick="menu(3,this.parentNode);">Afficher QCM</a>
+	        		<a class="nav-link" onclick="menu(3,this.parentNode);">QCMs existant</a>
 	      		</li>
 	      		<li class="nav-item">
 	        		<a class="nav-link" onclick="menu(4,this.parentNode);">Nous contacter</a>
@@ -77,12 +77,15 @@
 		 	<div class="collapse show row" id="formCreation">
 		 		<form onsubmit="setQCMname();return false;">
 				 	<div class="form-group">
-				    	<label for="QCMname">Nom du nouveau QCM</label>
-				    	<input type="text" class="form-control" id="QCMname" aria-describedby="qcmHelp" placeholder="Entrer le nom du QCM">
-				  	</div>
-				  	<button type="button" class="btn btn-primary" onclick="setQCMname();" data-toggle="tooltip" data-placement="top" title="Ce nom vous servira à retrouver votre QCM parmi la liste des QCMs existant">
-  					Créer le QCM
-					</button>
+				 		<label for="QCMname">Nom du nouveau QCM</label>
+					    <input type="text" class="form-control" id="QCMname" aria-describedby="qcmHelp" placeholder="Entrer le nom du QCM">
+				  		<div class="invalid-feedback">
+					    	Veuillez entrer un nom de QCM !
+					    </div>
+					  	<button type="button" class="btn btn-primary" onclick="setQCMname();" data-toggle="tooltip" data-placement="top" title="Ce nom vous servira à retrouver votre QCM parmi la liste des QCMs existant">
+	  					Créer le QCM
+						</button>
+					</div>
 				</form>
 		 	</div>
 			<div id="newQCM" class="collapse pt-4">
@@ -147,7 +150,14 @@
 			<div id="QCMcree" class="collapse card border mb-3">
 			  	<div class="card-header">Nom QCM</div>
 				<div class="card-body text">
-				    <h5 class="card-title">Question 1 <i id="quest1" class="far fa-trash-alt float-right" onclick="supprimerQuestion(this.id);"></i></h5>
+					<div class="row">
+						<div class="col-lg-10">
+					    	<h5 class="card-title">Question 1 </h5>
+						</div>
+					    <div class="col-lg-1 pt-1">
+							<i class="far fa-trash-alt" onclick="supprimerQuestion(this.parentNode);"></i>
+						</div>
+					</div>
 				    <div class="table-responsive">
 					    <table class="table">
 					      	<tbody>
@@ -831,10 +841,15 @@
 		}
 
 		function setQCMname(){
+
 			nomQCM = document.getElementById("QCMname").value;
-			document.getElementById("nomQCMFinal").textContent=nomQCM;
-			$('#newQCM').show();
-			$('#formCreation').hide();
+			if (nomQCM==""){
+				document.getElementById("QCMname").className="form-control is-invalid";
+			} else {
+				document.getElementById("nomQCMFinal").textContent=nomQCM;
+				$('#newQCM').show();
+				$('#formCreation').hide();
+			}
 		}
 
 		nbreReponse = 2;
@@ -912,6 +927,10 @@
 			} else {
 				alert("2 réponses minimum !");
 			}
+		}
+
+		function supprimerQuestion(parNode){
+			parNode.parentNode.parentNode.remove();
 		}
 
 		//Activer les tooltip
