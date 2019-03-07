@@ -651,7 +651,7 @@
 
 	<!-- Formulaire de contact -->
 	<div id="contactRetour" class="collapse">
-		<form class="text-center border border-light p-5">
+		<form class="text-center border border-light p-5" autocomplete="on">
 
     		<p class="h4 mb-4">Contactez-nous</p>
 
@@ -661,7 +661,7 @@
     				<label for="contactName" lass="form-control mb-2">Nom</label>
     			</div>
 			    <div class="col-lg-10">
-			    	<input type="text" id="contactName" class="form-control mb-4" placeholder="Nom" required autocomplete="family-name">
+			    	<input type="text" id="contactName" class="form-control mb-4" name="family-name" placeholder="Nom" required autocomplete="family-name">
 			    </div>
     		</div>
     		<!-- Prénom -->
@@ -670,7 +670,7 @@
     				<label for="contactFirstName">Prénom</label>
     			</div>
 			    <div class="col-lg-10">
-			    	<input type="text" id="contactFirstName" class="form-control mb-4" placeholder="Prénom" required autocomplete="given-name">
+			    	<input type="text" id="contactFirstName" class="form-control mb-4" name="given-name" placeholder="Prénom" required autocomplete="given-name">
 			    </div>
     		</div>
     		<!-- Email -->
@@ -679,7 +679,7 @@
     				<label for="contactEmail">E-mail</label>
     			</div>
 			    <div class="col-lg-10">
-			    	<input type="email" id="contactEmail" class="form-control mb-4" placeholder="E-mail" required autocomplete="email">
+			    	<input type="email" id="contactEmail" class="form-control mb-4" name="email" placeholder="E-mail" required autocomplete="email">
 			    </div>
     		</div>
     		<!-- Adresse -->
@@ -688,7 +688,7 @@
     				<label for="contactAdresse">Adresse</label>
     			</div>
 			    <div class="col-lg-10">
-			    	<input type="address" id="contactAdresse" class="form-control mb-4" placeholder="Adresse" required autocomplete="street-address">
+			    	<input type="ship-address" id="contactAdresse" class="form-control mb-4" name="Adresse" placeholder="Adresse" required autocomplete="street-address">
 			    </div>
     		</div>
     		<!-- Téléphone -->
@@ -697,7 +697,7 @@
     				<label for="contactTel">Téléphone</label>
     			</div>
 			    <div class="col-lg-10">
-			    	<input type="tel" name="phone" id="contactTel" class="form-control mb-4" placeholder="06.12.34.56.78" required autocomplete="tel">
+			    	<input type="tel" name="phone" id="contactTel" class="form-control mb-4" name="tel" placeholder="06.12.34.56.78" required autocomplete="tel">
 			    </div>
     		</div>
 		
