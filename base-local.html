@@ -149,7 +149,7 @@
 			<!-- Prévisualisation en direct du QCM créé -->
 			<div id="QCMcree" class="collapse card border mb-3">
 			  	<div class="card-header">Nom QCM</div>
-				<div class="card-body text">
+				<div class="card-body text" id="bodyACloner">
 					<div class="row">
 						<div class="col-lg-10">
 					    	<h5 class="card-title">Question 1 </h5>
@@ -897,41 +897,49 @@
 			if (nbreQuestion < 1){
 				$('#QCMcree').show();
 			}
-			nbreQuestion =+1;
+			nbreQuestion +=1;
 			//set nom QCM
-			nomQCM = document.getElementById("QCMname").value;
-			document.getElementsByClassName("card-header")[0].innerText= nomQCM;
+			if(nbreQuestion==1){
+				nomQCM = document.getElementById("QCMname").value;
+				document.getElementsByClassName("card-header")[0].innerText= nomQCM;
+			}
+			
+			//bodyClone = document.getElementsByClassName("card-body text").cloneNode(true);
+			if (nbreQuestion == 1){
+				//set nom Question
+				nomQuestion = document.getElementById("intituleQuestion").value;
+				document.getElementsByClassName("card-title")[0].innerText = nomQuestion;
 
-			//set nom Question
-			nomQuestion = document.getElementById("intituleQuestion").value;
-			document.getElementsByClassName("card-title")[0].innerText = nomQuestion;
+				//Compter nombre réponses
+				nbreRep = document.getElementsByClassName("row rep").length;
+				//test qu'on a bien un minimum de 2 réponses
+				if (nbreRep >=2){
+					
+					for (i=0;i<nbreRep;i++){
+						nomRep=document.getElementsByClassName("row rep")[i].firstElementChild.firstElementChild.value;
+						if (i>1){
+							RepQCMClone = document.getElementsByClassName("RepQCM")[0].cloneNode(true);
+							RepQCMClone.children[0].innerHTML="Réponse "+(i+1);
+							RepQCMClone.children[1].innerHTML=nomRep;
+							document.getElementsByClassName("table")[0].appendChild(RepQCMClone)
+						} else {
+							document.getElementsByClassName("RepQCM")[i].children[1].innerText=nomRep;
+						}
+						//test si cette réponse est une réponse correcte
+						booljuste = document.getElementsByClassName("custom-control-input")[i].checked;
+						if (booljuste == true){
+							document.getElementsByClassName("RepQCM")[i].className = "RepQCM table-success";
+						} else {
+							document.getElementsByClassName("RepQCM")[i].className = "RepQCM";
+						}
+					}
 
-			//Compter nombre réponses
-			nbreRep = document.getElementsByClassName("row rep").length;
-			//test qu'on a bien un minimum de 2 réponses
-			if (nbreRep >=2){
-				
-				for (i=0;i<nbreRep;i++){
-					nomRep=document.getElementsByClassName("row rep")[i].firstElementChild.firstElementChild.value;
-					if (i>1){
-						RepQCMClone = document.getElementsByClassName("RepQCM")[0].cloneNode(true);
-						RepQCMClone.children[0].innerHTML="Réponse "+(i+1);
-						RepQCMClone.children[1].innerHTML=nomRep;
-						document.getElementsByClassName("table")[0].appendChild(RepQCMClone)
-					} else {
-						document.getElementsByClassName("RepQCM")[i].children[1].innerText=nomRep;
-					}
-					//test si cette réponse est une réponse correcte
-					booljuste = document.getElementsByClassName("custom-control-input")[i].checked;
-					if (booljuste == true){
-						document.getElementsByClassName("RepQCM")[i].className = "RepQCM table-success";
-					} else {
-						document.getElementsByClassName("RepQCM")[i].className = "RepQCM";
-					}
+				} else {
+					alert("2 réponses minimum !");
 				}
-
+			//A FAIRE
 			} else {
-				alert("2 réponses minimum !");
+				bodyClone = document.getElementById("bodyACloner").cloneNode(true);
 			}
 		}
 		
