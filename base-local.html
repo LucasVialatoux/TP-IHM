@@ -908,49 +908,33 @@
 
 			//Compter nombre réponses
 			nbreRep = document.getElementsByClassName("row rep").length;
-
-			nodeACloner = document.getElementsByClassName("RepQCM")[0];
-			noeudClone = nodeACloner.cloneNode(true);
-			nbreEnfant = noeudClone.childNodes.length;
-			for(j=0;j<nbreEnfant;j++){
-				if (j%2==1){
-					noeudClone.childNodes[j].innerHTML="";
-				}
-			}
-			nbreTd = noeudClone.childElementCount;
 			//test qu'on a bien un minimum de 2 réponses
 			if (nbreRep >=2){
-				//On a + de réponses que de <td> donc on ajoute les td correspondant
-				if (nbreRep>nbreTd){
-					tdVierge = noeudClone.firstElementChild;
-					for (k=0;k<(nbreRep-nbreTd);k++){
-						noeudClone.appendChild(tdVierge);
-					}
-				//On a - de réponses que de <td> donc on supprime des td
-				} else if (nbreRep<nbreTd){
-					for (k=0;k<(nbreRep-nbreTd);k++){
-						noeudClone.lastElementChild.remove
-					}
-				//On a autant de td que de nombre de réponses, on laisse comme c'est
-				} else {
-					
-				}
 				
 				for (i=0;i<nbreRep;i++){
-					nomRep=document.getElementsByClassName("form-control mb-4")[i+1].value;
-					document.getElementsByClassName("RepQCM")[i].getElementsByTagName("td")[1].innerText=nomRep;
+					nomRep=document.getElementsByClassName("row rep")[i].firstElementChild.firstElementChild.value;
+					if (i>1){
+						RepQCMClone = document.getElementsByClassName("RepQCM")[0].cloneNode(true);
+						RepQCMClone.children[0].innerHTML="Réponse "+(i+1);
+						RepQCMClone.children[1].innerHTML=nomRep;
+						document.getElementsByClassName("table")[0].appendChild(RepQCMClone)
+					} else {
+						document.getElementsByClassName("RepQCM")[i].children[1].innerText=nomRep;
+					}
 					//test si cette réponse est une réponse correcte
-					booljuste = document.getElementsByClassName("custom-control-input")[i].checked
+					booljuste = document.getElementsByClassName("custom-control-input")[i].checked;
 					if (booljuste == true){
 						document.getElementsByClassName("RepQCM")[i].className = "RepQCM table-success";
 					} else {
 						document.getElementsByClassName("RepQCM")[i].className = "RepQCM";
 					}
 				}
+
 			} else {
 				alert("2 réponses minimum !");
 			}
 		}
+		
 
 		function supprimerQuestion(parNode){
 			if (nbreQuestion>1){
@@ -963,8 +947,8 @@
 
 		//Activer les tooltip
 		$(function () {
-  			$('[data-toggle="tooltip"]').tooltip()
-		})
+  			$('[data-toggle="tooltip"]').tooltip();
+		});
 		
 	</script>
 	<!-- Fin Javascript -->
