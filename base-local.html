@@ -909,10 +909,33 @@
 			//Compter nombre réponses
 			nbreRep = document.getElementsByClassName("row rep").length;
 
-
-
-			//test qu'on a bien un minimum de 2 questions
+			nodeACloner = document.getElementsByClassName("RepQCM")[0];
+			noeudClone = nodeACloner.cloneNode(true);
+			nbreEnfant = noeudClone.childNodes.length;
+			for(j=0;j<nbreEnfant;j++){
+				if (j%2==1){
+					noeudClone.childNodes[j].innerHTML="";
+				}
+			}
+			nbreTd = noeudClone.childElementCount;
+			//test qu'on a bien un minimum de 2 réponses
 			if (nbreRep >=2){
+				//On a + de réponses que de <td> donc on ajoute les td correspondant
+				if (nbreRep>nbreTd){
+					tdVierge = noeudClone.firstElementChild;
+					for (k=0;k<(nbreRep-nbreTd);k++){
+						noeudClone.appendChild(tdVierge);
+					}
+				//On a - de réponses que de <td> donc on supprime des td
+				} else if (nbreRep<nbreTd){
+					for (k=0;k<(nbreRep-nbreTd);k++){
+						noeudClone.lastElementChild.remove
+					}
+				//On a autant de td que de nombre de réponses, on laisse comme c'est
+				} else {
+					
+				}
+				
 				for (i=0;i<nbreRep;i++){
 					nomRep=document.getElementsByClassName("form-control mb-4")[i+1].value;
 					document.getElementsByClassName("RepQCM")[i].getElementsByTagName("td")[1].innerText=nomRep;
@@ -930,7 +953,12 @@
 		}
 
 		function supprimerQuestion(parNode){
-			parNode.parentNode.parentNode.remove();
+			if (nbreQuestion>1){
+				parNode.parentNode.parentNode.remove();
+			} else {
+				alert("1 question minimum par QCM, veuillez en ajouter une autre avant de pouvoir supprimer celle-ci");
+			}
+			
 		}
 
 		//Activer les tooltip
