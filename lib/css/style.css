@@ -86,3 +86,9 @@ body{
 .main-btn:hover, .white-btn:hover, .outline-btn:hover {
     opacity: 0.8;
 }
+
+/* --  curseur boutons (création QCM)  -- */
+
+i.fas, i.far, button.white-btn, button.main-btn{
+    cursor:pointer;
+}

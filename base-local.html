@@ -95,47 +95,64 @@
 				    <p class="h4 mb-4" id="nomQCMFinal"></p>
 
 				    <!-- Nom question -->
-				    <input type="text" id="intituleQuestion" class="form-control mb-4" placeholder="Intitulé de la question">
+				    <div class="row">
+					    <div class="col-lg-2 pt-1">
+					    	<label for="intituleQuestion">Intitulé de la question</label>
+						</div>
+						<div class="col-lg-10">
+					    	<input type="text" id="intituleQuestion" class="form-control mb-4" placeholder="Intitulé de la question">
+					    </div>
+					</div>
 
 				    <!-- Réponses possible -->
 				    <div class="reponses">
 					    <div class="row rep">
-					    	<div class="col-lg-10">
-					    		<input type="text" class="form-control mb-4" placeholder="Réponse possible">
+					    	<div class="col-lg-2 pt-1">
+						    	<label for="repPos1">Réponse 1</label>
+							</div>
+					    	<div class="col-8">
+					    		<input type="text" id="repPos1" class="form-control mb-4" placeholder="Réponse possible">
 					    	</div>
-						    <div class="col-lg-1 pt-1">
+						    <div class="col-1 pt-1">
 						    	<i class="fas fa-plus" onclick="ajouterReponse();"></i>
 						    </div>
-						    <div class="col-lg-1 pt-1">
+						    <div class="col-1 pt-1">
 						    	<i id="rep1" class="far fa-trash-alt" onclick="supprimerReponse(this.parentNode);"></i>
 						    </div>
 						</div>
 						<div class="row rep">
-					    	<div class="col-lg-10">
-					    		<input type="text" class="form-control mb-4" placeholder="Réponse possible">
+							<div class="col-lg-2 pt-1">
+						    	<label for="repPos2">Réponse 2</label>
+							</div>
+					    	<div class="col-8">
+					    		<input type="text" id="repPos2" class="form-control mb-4" placeholder="Réponse possible">
 					    	</div>
-						    <div class="col-lg-1 pt-1">
+						    <div class="col-1 pt-1">
 						    	<i class="fas fa-plus" onclick="ajouterReponse();"></i>
 						    </div>
-						    <div class="col-lg-1 pt-1">
+						    <div class="col-1 pt-1">
 						    	<i id="rep2" class="far fa-trash-alt" onclick="supprimerReponse(this.parentNode);"></i>
 						    </div>
 						</div>
 					</div>
 					
-				    
-				    <!-- Cocher réponses correctes -->
-				    <label>Cochez la/les réponse(s) correcte(s)</label>
-
-				    <!-- Réponses à cocher-->
-				    <div id="cocheReponse">
-						<div class="custom-control custom-checkbox custom-control-inline">
-						  <input type="checkbox" class="custom-control-input" id="repJuste1">
-						  <label class="custom-control-label" for="repJuste1">1</label>
-						</div>
-						<div class="custom-control custom-checkbox custom-control-inline">
-						  <input type="checkbox" class="custom-control-input" id="repJuste2">
-						  <label class="custom-control-label" for="repJuste2">2</label>
+				    <div class="row">
+					    <!-- Cocher réponses correctes -->
+					    <div class="col-lg-2 pt-1">
+					    	<label>Cochez la/les réponse(s) correcte(s)</label>
+					    </div>
+					    <div class="col-9">
+						    <!-- Réponses à cocher-->
+						    <div id="cocheReponse" class="text-left">
+								<div class="custom-control custom-checkbox custom-control-inline">
+								  <input type="checkbox" class="custom-control-input" id="repJuste1">
+								  <label class="custom-control-label" for="repJuste1">1</label>
+								</div>
+								<div class="custom-control custom-checkbox custom-control-inline">
+								  <input type="checkbox" class="custom-control-input" id="repJuste2">
+								  <label class="custom-control-label" for="repJuste2">2</label>
+								</div>
+							</div>
 						</div>
 					</div>
 
@@ -658,68 +675,102 @@
     		<!-- Nom de famille -->
     		<div class="row">
     			<div class="col-lg-2 pt-2">
-    				<label for="contactName" lass="form-control mb-2">Nom</label>
+    				<label for="contactName" lass="form-control mb-2">Nom *</label>
     			</div>
-			    <div class="col-lg-10">
-			    	<input type="text" id="contactName" class="form-control mb-4" name="family-name" placeholder="Nom" required autocomplete="family-name">
+			    <div class="col-lg-10 mb-4 text-left">
+			    	<input type="text" id="contactName" class="form-control" name="family-name" placeholder="Nom" required autocomplete="family-name" onchange="checkForm(this.parentNode,0);">
+			    	<div class="invalid-feedback">
+			    		Veuillez vérifier votre nom de famille
+				    </div>
+			    	<div class="valid-feedback">
+			    		Ce nom semble juste
+				    </div>
 			    </div>
     		</div>
     		<!-- Prénom -->
     		<div class="row">
     			<div class="col-lg-2 pt-2">
-    				<label for="contactFirstName">Prénom</label>
+    				<label for="contactFirstName">Prénom *</label>
     			</div>
-			    <div class="col-lg-10">
-			    	<input type="text" id="contactFirstName" class="form-control mb-4" name="given-name" placeholder="Prénom" required autocomplete="given-name">
+			    <div class="col-lg-10 mb-4 text-left">
+			    	<input type="text" id="contactFirstName" class="form-control" name="given-name" placeholder="Prénom" required autocomplete="given-name" onchange="checkForm(this.parentNode,0);">
+			    	<div class="invalid-feedback">
+			    		Veuillez vérifier votre prénom
+				    </div>
+			    	<div class="valid-feedback">
+			    		Ce prénom semble correct
+				    </div>
 			    </div>
     		</div>
     		<!-- Email -->
     		<div class="row">
     			<div class="col-lg-2 pt-2">
-    				<label for="contactEmail">E-mail</label>
+    				<label for="contactEmail">E-mail *</label>
     			</div>
-			    <div class="col-lg-10">
-			    	<input type="email" id="contactEmail" class="form-control mb-4" name="email" placeholder="E-mail" required autocomplete="email">
+			    <div class="col-lg-10 mb-4 text-left">
+			    	<input type="email" id="contactEmail" class="form-control" name="email" placeholder="E-mail" required autocomplete="email" onchange="checkForm(this.parentNode,1);">
+			    	<div class="invalid-feedback">
+			    		Veuillez vérifier votre adresse mail, elle doit être au format : uneadresse@unmail.fr
+				    </div>
+			    	<div class="valid-feedback">
+			    		Cette adresse mail semble juste
+				    </div>
 			    </div>
     		</div>
     		<!-- Adresse -->
     		<div class="row">
     			<div class="col-lg-2 pt-2">
-    				<label for="contactAdresse">Adresse</label>
+    				<label for="contactAdresse">Adresse *</label>
     			</div>
-			    <div class="col-lg-10">
-			    	<input type="ship-address" id="contactAdresse" class="form-control mb-4" name="Adresse" placeholder="Adresse" required autocomplete="street-address">
+			    <div class="col-lg-10 mb-4 text-left">
+			    	<input type="ship-address" id="contactAdresse" class="form-control" name="Adresse" placeholder="Adresse" required autocomplete="street-address" onchange="checkForm(this.parentNode,2);">
+			    	<div class="invalid-feedback">
+			    		Veuillez vérifier votre adresse
+				    </div>
+    				<div class="valid-feedback">
+			    		Cette adresse semble juste
+				    </div>
 			    </div>
     		</div>
     		<!-- Téléphone -->
     		<div class="row">
     			<div class="col-lg-2 pt-2">
-    				<label for="contactTel">Téléphone</label>
+    				<label for="contactTel">Téléphone *</label>
     			</div>
-			    <div class="col-lg-10">
-			    	<input type="tel" name="phone" id="contactTel" class="form-control mb-4" name="tel" placeholder="06.12.34.56.78" required autocomplete="tel">
+			    <div class="col-lg-10 mb-4 text-left">
+			    	<input type="tel" name="phone" id="contactTel" class="form-control" name="tel" placeholder="06.12.34.56.78" pattern="[0-9]{2}.[0-9]{2}.[0-9]{2}.[0-9]{2}.[0-9]{2}|[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}" required autocomplete="tel" onchange="checkForm(this.parentNode,3);">
+			    	<div class="invalid-feedback">
+			    		Veuillez vérifier votre numéro, qui doit être au format : 06.12.34.56.78 ou 0612345678
+				    </div>
+			    	<div class="valid-feedback">
+			    		Ce téléphone semble juste
+				    </div>
 			    </div>
     		</div>
 		
     		<!-- Votre retour -->
     		<div class="row">
     			<div class="col-lg-2 pt-2">
-    				<label for="contactText">Votre retour</label>
+    				<label for="contactText">Votre retour *</label>
     			</div>
-			    <div class="col-lg-10">
-			    	<input type="text" id="contactText" class="form-control mb-4" placeholder="Décrivez nous votre retour">
+			    <div class="col-lg-10 mb-4 text-left">
+			    	<input type="text" id="contactText" class="form-control" placeholder="Décrivez nous votre retour" onchange="checkForm(this.parentNode,2);">
+			    	<div class="invalid-feedback">
+			    		Pensez à nous décrire votre retour
+				    </div>
+			    	<div class="valid-feedback">
+			    		Super, pensez à cliquer sur "Envoyer"
+				    </div>
 			    </div>
     		</div>
     		
 			<!-- Recevoir une copie -->
-    		<div class="d-flex justify-content-around">
-    		    <div>
-    		        <div class="custom-control custom-checkbox">
-    		            <input type="checkbox" class="custom-control-input" id="contactRecevoirCopie">
-    		            <label class="custom-control-label" for="contactRecevoirCopie">Recevoir une copie de ce retour par mail</label>
-    		        </div>
-    		    </div>
-    		</div>
+		    <div class="col-md-5 text-left">
+		        <div class="custom-control custom-checkbox">
+		            <input type="checkbox" class="custom-control-input" id="contactRecevoirCopie">
+		            <label class="custom-control-label" for="contactRecevoirCopie">Recevoir une copie de ce retour par mail</label>
+		        </div>
+		    </div>
     		<!-- Bouton envoyer -->
     		<button class="btn btn-info btn-block my-4" type="submit">Envoyer</button>
 
@@ -861,9 +912,14 @@
 			var repClone = rep.cloneNode(true);
 			//Ajout id différent pour le clone
 			nbre=document.getElementsByClassName("row rep").length+1
-			repClone.getElementsByClassName("col-lg-1 pt-1")[1].getElementsByClassName("far fa-trash-alt")[0].id="rep"+nbreReponse;
+			repClone.getElementsByClassName("col-1 pt-1")[1].getElementsByClassName("far fa-trash-alt")[0].id="rep"+nbreReponse;
 			//On s'assure qu'aucune réponse n'est clonée
 			repClone.getElementsByClassName("form-control mb-4")[0].value="";
+			//Modifier label
+			repClone.children[0].firstElementChild.innerHTML="Réponse "+nbreReponse;
+			repClone.children[0].firstElementChild.htmlFor="repPos"+nbreReponse;
+			repClone.children[1].firstElementChild.id="repPos"+nbreReponse;
+			//Et enfin cloner
 			node.appendChild(repClone);
 			
 			//Ajout case à cocher
@@ -874,6 +930,7 @@
 			cocheClone.getElementsByClassName("custom-control-input")[0].checked=false;
 			cocheClone.getElementsByClassName("custom-control-input")[0].id="repJuste"+nbreReponse
 			cocheClone.getElementsByClassName("custom-control-label")[0].htmlFor="repJuste"+nbreReponse
+
 			nodeCoche.appendChild(cocheClone);
 			//Ajout et calcul numéro rép
 			cocheName = document.getElementsByClassName("custom-control-label");
@@ -886,6 +943,11 @@
 				nodePar.parentNode.remove();
 				document.getElementsByClassName("custom-control custom-checkbox custom-control-inline")[nbreReponse-1].remove();
 				nbreReponse=nbreReponse-1;
+				for (var i=0;i<nbreReponse;i++){
+					document.getElementsByClassName("col-lg-2 pt-1")[i+1].firstElementChild.innerHTML="Réponse "+(i+1);
+					document.getElementsByClassName("col-lg-2 pt-1")[i+1].firstElementChild.htmlFor="repPos"+(i+1);
+					document.getElementsByClassName("col-8")[i].firstElementChild.id="repPos"+(i+1);
+				}
 			} else {
 				alert("2 réponses minimum !");
 			}
@@ -932,17 +994,40 @@
 						} else {
 							document.getElementsByClassName("RepQCM")[i].className = "RepQCM";
 						}
+						
 					}
+					
 
 				} else {
 					alert("2 réponses minimum !");
 				}
+				rAz();
 			//A FAIRE
 			} else {
 				bodyClone = document.getElementById("bodyACloner").cloneNode(true);
 			}
 		}
 		
+		function rAz(){
+			//Compter nombre réponses
+			nbreRep = document.getElementsByClassName("row rep").length;
+			//Remise à zéro question
+			document.getElementById("intituleQuestion").value="";
+			//Remise à zéro réponses
+			for (i=0;i<nbreRep;i++){
+				document.getElementsByClassName("row rep")[i].children[1].firstElementChild.value="";
+				if (document.getElementsByClassName("custom-control custom-checkbox custom-control-inline")[i].firstElementChild.checked){
+					document.getElementsByClassName("custom-control custom-checkbox custom-control-inline")[i].firstElementChild.checked=false;
+				}
+			}
+			for (i=0;i<nbreRep;i++){
+				//Suppression des réponses en + de 2.
+				if (i>1){
+					parentN = document.getElementsByClassName("row rep")[2].firstElementChild;
+					supprimerReponse(parentN);
+				}
+			}
+		}
 
 		function supprimerQuestion(parNode){
 			if (nbreQuestion>1){
@@ -951,6 +1036,46 @@
 				alert("1 question minimum par QCM, veuillez en ajouter une autre avant de pouvoir supprimer celle-ci");
 			}
 			
+		}
+
+		function  checkForm(parNod,i){
+			fChild = parNod.firstElementChild;
+			if (fChild.value.length>0){
+				//Test pour nom et prénom
+				if (i==0 && hasNumber(fChild.value)==false){
+					fChild.className="form-control is-valid";
+				//Test pour adresse e-mail
+				} else if(i==1 && fChild.value.includes('@')){
+					fChild.className="form-control is-valid";
+				//Test pour adresse et retour
+				} else if(i==2){
+					fChild.className="form-control is-valid";
+				//Test pour numéro de téléphone
+				} else if(i==3 && isPhoneNumber(fChild.value)==true){
+					fChild.className="form-control is-valid";
+				}else{
+					fChild.className="form-control is-invalid";
+				}
+				
+			} else {
+				fChild.className="form-control is-invalid";
+			}
+		}
+
+		function hasNumber(myString){
+			return /\d/.test(myString);
+		}
+
+		function isPhoneNumber(myString){
+			var regex1 = /[0-9]{10}/;
+			var regex2 = /[0-9]{2}.[0-9]{2}.[0-9]{2}.[0-9]{2}.[0-9]{2}/;
+			if(regex1.test(myString) && myString.length==10){
+				return true;
+			} else if(regex2.test(myString) && myString.length==14){
+				return true;
+			} else {
+				return false;
+			}
 		}
 
 		//Activer les tooltip
