@@ -99,8 +99,14 @@
 					    <div class="col-lg-2 pt-1">
 					    	<label for="intituleQuestion">Intitulé de la question</label>
 						</div>
-						<div class="col-lg-10">
-					    	<input type="text" id="intituleQuestion" class="form-control mb-4" placeholder="Intitulé de la question">
+						<div class="col-lg-10 mb-4 text-left">
+					    	<input type="text" id="intituleQuestion" class="form-control" placeholder="Intitulé de la question" onchange="checkForm(this.parentNode,2);">
+					    	<div class="invalid-feedback">
+					    		Veuillez entrer une question
+						    </div>
+					    	<div class="valid-feedback">
+					    		Super !
+						    </div>
 					    </div>
 					</div>
 
@@ -110,8 +116,14 @@
 					    	<div class="col-lg-2 pt-1">
 						    	<label for="repPos1">Réponse 1</label>
 							</div>
-					    	<div class="col-8">
-					    		<input type="text" id="repPos1" class="form-control mb-4" placeholder="Réponse possible">
+					    	<div class="col-8 mb-4 text-left">
+					    		<input type="text" id="repPos1" class="form-control" placeholder="Réponse possible" onchange="checkForm(this.parentNode,2);">
+					    		<div class="invalid-feedback">
+						    		Veuillez entrer une réponse
+							    </div>
+						    	<div class="valid-feedback">
+						    		Super !
+							    </div>
 					    	</div>
 						    <div class="col-1 pt-1">
 						    	<i class="fas fa-plus" onclick="ajouterReponse();"></i>
@@ -124,8 +136,14 @@
 							<div class="col-lg-2 pt-1">
 						    	<label for="repPos2">Réponse 2</label>
 							</div>
-					    	<div class="col-8">
-					    		<input type="text" id="repPos2" class="form-control mb-4" placeholder="Réponse possible">
+					    	<div class="col-8 mb-4 text-left">
+					    		<input type="text" id="repPos2" class="form-control" placeholder="Réponse possible" onchange="checkForm(this.parentNode,2);">
+					    		<div class="invalid-feedback">
+						    		Veuillez entrer une réponse
+							    </div>
+						    	<div class="valid-feedback">
+						    		Super !
+							    </div>
 					    	</div>
 						    <div class="col-1 pt-1">
 						    	<i class="fas fa-plus" onclick="ajouterReponse();"></i>
@@ -754,7 +772,7 @@
     				<label for="contactText">Votre retour *</label>
     			</div>
 			    <div class="col-lg-10 mb-4 text-left">
-			    	<input type="text" id="contactText" class="form-control" placeholder="Décrivez nous votre retour" onchange="checkForm(this.parentNode,2);">
+			    	<textarea class="form-control" id="contactText" rows="3" placeholder="Décrivez nous votre retour.." onchange="checkForm(this.parentNode,2);"></textarea>
 			    	<div class="invalid-feedback">
 			    		Pensez à nous décrire votre retour
 				    </div>
@@ -914,7 +932,8 @@
 			nbre=document.getElementsByClassName("row rep").length+1
 			repClone.getElementsByClassName("col-1 pt-1")[1].getElementsByClassName("far fa-trash-alt")[0].id="rep"+nbreReponse;
 			//On s'assure qu'aucune réponse n'est clonée
-			repClone.getElementsByClassName("form-control mb-4")[0].value="";
+			repClone.getElementsByClassName("form-control")[0].value="";
+			repClone.children[1].firstElementChild.className="form-control";
 			//Modifier label
 			repClone.children[0].firstElementChild.innerHTML="Réponse "+nbreReponse;
 			repClone.children[0].firstElementChild.htmlFor="repPos"+nbreReponse;
@@ -1064,6 +1083,16 @@
 
 		function hasNumber(myString){
 			return /\d/.test(myString);
+		}
+
+		function checkQCM(parN){
+			fChild = parN.firstElementChild;
+			if (fChild.value.length>0){
+				fChild.className="form-control mb-4 is-valid";
+			} else {
+				fChild.className="form-control mb-4 is-invalid";
+			}
+			
 		}
 
 		function isPhoneNumber(myString){
