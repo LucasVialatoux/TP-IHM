@@ -975,56 +975,79 @@
 		nbreQuestion =0;
 
 		function ajouterQuestion(){
-			if (nbreQuestion < 1){
-				$('#QCMcree').show();
-			}
-			nbreQuestion +=1;
-			//set nom QCM
-			if(nbreQuestion==1){
-				nomQCM = document.getElementById("QCMname").value;
-				document.getElementsByClassName("card-header")[0].innerText= nomQCM;
+			var exit = false;
+			//Check que l'intitulé de la question est renseignée
+			nomQuestion = document.getElementById("intituleQuestion").value;
+			if (nomQuestion ==""){
+				alert("Veuillez renseigner un intitulé pour la question");
+				exit = true;
 			}
 			
-			//bodyClone = document.getElementsByClassName("card-body text").cloneNode(true);
-			if (nbreQuestion == 1){
-				//set nom Question
-				nomQuestion = document.getElementById("intituleQuestion").value;
-				document.getElementsByClassName("card-title")[0].innerText = nomQuestion;
+			//Compter nombre réponses
+			nbreRep = document.getElementsByClassName("row rep").length;
+			//Check que les réponses sont renseignées
+			for (i=0;i<nbreRep;i++){
+				nomRep=document.getElementsByClassName("row rep")[i].children[1].firstElementChild.value;
+				if (nomRep ==""){
+					alert("Veuillez renseigner une réponse pour la réponse "+(i+1));
+					exit = true;
+					break;
+				}
+			}
+			if(exit == false ){
+				if (nbreQuestion < 1){
+					$('#QCMcree').show();
+				}
+				nbreQuestion +=1;
+				//set nom QCM
+				if(nbreQuestion==1){
+					nomQCM = document.getElementById("QCMname").value;
+					document.getElementsByClassName("card-header")[0].innerText= nomQCM;
+				}
 
-				//Compter nombre réponses
-				nbreRep = document.getElementsByClassName("row rep").length;
-				//test qu'on a bien un minimum de 2 réponses
-				if (nbreRep >=2){
-					
-					for (i=0;i<nbreRep;i++){
-						nomRep=document.getElementsByClassName("row rep")[i].firstElementChild.firstElementChild.value;
-						if (i>1){
-							RepQCMClone = document.getElementsByClassName("RepQCM")[0].cloneNode(true);
-							RepQCMClone.children[0].innerHTML="Réponse "+(i+1);
-							RepQCMClone.children[1].innerHTML=nomRep;
-							document.getElementsByClassName("table")[0].appendChild(RepQCMClone)
-						} else {
-							document.getElementsByClassName("RepQCM")[i].children[1].innerText=nomRep;
-						}
-						//test si cette réponse est une réponse correcte
-						booljuste = document.getElementsByClassName("custom-control-input")[i].checked;
-						if (booljuste == true){
-							document.getElementsByClassName("RepQCM")[i].className = "RepQCM table-success";
-						} else {
-							document.getElementsByClassName("RepQCM")[i].className = "RepQCM";
+				
+				//bodyClone = document.getElementsByClassName("card-body text").cloneNode(true);
+				if (nbreQuestion == 1){
+					//set nom Question
+					nomQuestion = document.getElementById("intituleQuestion").value;
+					document.getElementsByClassName("card-title")[0].innerText = nomQuestion;
+
+					//Compter nombre réponses
+					nbreRep = document.getElementsByClassName("row rep").length;
+					//test qu'on a bien un minimum de 2 réponses
+					if (nbreRep >=2){
+						
+						for (i=0;i<nbreRep;i++){
+							nomRep=document.getElementsByClassName("row rep")[i].children[1].firstElementChild.value;
+							if (i>1){
+								RepQCMClone = document.getElementsByClassName("RepQCM")[0].cloneNode(true);
+								RepQCMClone.children[0].innerHTML="Réponse "+(i+1);
+								RepQCMClone.children[1].innerHTML=nomRep;
+								document.getElementsByClassName("table")[0].appendChild(RepQCMClone)
+							} else {
+								document.getElementsByClassName("RepQCM")[i].children[1].innerText=nomRep;
+							}
+							//test si cette réponse est une réponse correcte
+							booljuste = document.getElementsByClassName("custom-control-input")[i].checked;
+							if (booljuste == true){
+								document.getElementsByClassName("RepQCM")[i].className = "RepQCM table-success";
+							} else {
+								document.getElementsByClassName("RepQCM")[i].className = "RepQCM";
+							}
+							
 						}
 						
-					}
-					
 
+					} else {
+						alert("2 réponses minimum !");
+					}
+					rAz();
+				//A FAIRE
 				} else {
-					alert("2 réponses minimum !");
+					bodyClone = document.getElementById("bodyACloner").cloneNode(true);
 				}
-				rAz();
-			//A FAIRE
-			} else {
-				bodyClone = document.getElementById("bodyACloner").cloneNode(true);
 			}
+		
 		}
 		
 		function rAz(){
@@ -1032,9 +1055,11 @@
 			nbreRep = document.getElementsByClassName("row rep").length;
 			//Remise à zéro question
 			document.getElementById("intituleQuestion").value="";
+			document.getElementById("intituleQuestion").className="form-control";
 			//Remise à zéro réponses
 			for (i=0;i<nbreRep;i++){
 				document.getElementsByClassName("row rep")[i].children[1].firstElementChild.value="";
+				document.getElementsByClassName("row rep")[i].children[1].firstElementChild.className="form-control";
 				if (document.getElementsByClassName("custom-control custom-checkbox custom-control-inline")[i].firstElementChild.checked){
 					document.getElementsByClassName("custom-control custom-checkbox custom-control-inline")[i].firstElementChild.checked=false;
 				}
