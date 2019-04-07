@@ -698,7 +698,7 @@
 			 </div>
 		 </div>
 		 <div class="card-body text hauteurCadre">
-		 	<button class="btn btn-info btn-block boutonRetour" style="width:170px" type="button" onclick="Retour(5s);">Retour</button>
+		 	<button class="btn btn-info btn-block boutonRetour" style="width:170px" type="button" onclick="Retour(5);">Retour</button>
 		 </div>
 	 </div>
 
@@ -914,6 +914,7 @@
 		function QCM(id){
 				$('#affichage').hide();
 				$('#QCM'+id).show();
+				jQuery('html, body').animate({scrollTop: 0}, 0);
 		}
 
 		function Retour(id){
