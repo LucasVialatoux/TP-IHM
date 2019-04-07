@@ -80,7 +80,7 @@
 				 		<label for="QCMname">Nom du nouveau QCM</label>
 					    <input type="text" class="form-control" id="QCMname" aria-describedby="qcmHelp" placeholder="Entrer le nom du QCM">
 				  		<div class="invalid-feedback">
-					    	Veuillez entrer un nom de QCM !
+					    	Veuillez entrer un nom de QCM
 					    </div>
 					  	<button type="button" class="btn btn-primary" onclick="setQCMname();" data-toggle="tooltip" data-placement="top" title="Ce nom vous servira à retrouver votre QCM parmi la liste des QCMs existant">
 	  					Créer le QCM
@@ -184,30 +184,32 @@
 			<!-- Prévisualisation en direct du QCM créé -->
 			<div id="QCMcree" class="collapse card border mb-3">
 			  	<div class="card-header">Nom QCM</div>
-				<div class="card-body text" id="bodyACloner">
-					<div class="row">
-						<div class="col-lg-10">
-					    	<h5 class="card-title">Question 1 </h5>
+			  	<div id="divWrapper">
+					<div class="card-body text" id="bodyACloner">
+						<div class="row">
+							<div class="col-lg-10">
+						    	<h5 class="card-title">Question 1 </h5>
+							</div>
+						    <div class="col-lg-1 pt-1">
+								<i class="far fa-trash-alt" onclick="supprimerQuestion(this.parentNode);"></i>
+							</div>
 						</div>
-					    <div class="col-lg-1 pt-1">
-							<i class="far fa-trash-alt" onclick="supprimerQuestion(this.parentNode);"></i>
+					    <div class="table-responsive">
+						    <table class="table">
+						      	<tbody>
+						        	<tr class="RepQCM">
+						          		<td>Réponse 1</td>
+						          		<td>La réponse</td>
+						          		<td></td>
+						        	</tr>
+						        	<tr class="RepQCM">
+						          		<td>Réponse 2</td>
+						          		<td>La réponse correcte</td>
+						          		<td></td>
+						        	</tr>
+						      	</tbody>
+						    </table>
 						</div>
-					</div>
-				    <div class="table-responsive">
-					    <table class="table">
-					      	<tbody>
-					        	<tr class="RepQCM">
-					          		<td>Réponse 1</td>
-					          		<td>La réponse</td>
-					          		<td></td>
-					        	</tr>
-					        	<tr class="RepQCM">
-					          		<td>Réponse 2</td>
-					          		<td>La réponse correcte</td>
-					          		<td></td>
-					        	</tr>
-					      	</tbody>
-					    </table>
 					</div>
 				</div>
 			</div>
@@ -271,7 +273,7 @@
 
 
 	 <div id="QCM1" class="collapse card border mb-3">
-		 <div class="card-header hauteurCadre"><span class="titre">Volcan</span> <button class="btn btn-info btn-block boutonRetour" style="width:170px" type="button" onclick="Retour(1);">Retour</button></div>
+		 <div class="card-header hauteurCadre"><span class="titre">Volcan</span> </div>
 		 <div class="card-body text">
 			 <h5 class="card-title">1) Qu'est-ce qu'un volcan?</h5>
 			 <div class="table-responsive">
@@ -377,11 +379,15 @@
 				 </table>
 			 </div>
 		 </div>
+		 <div class="card-body text hauteurCadre">
+		 	<button class="btn btn-info btn-block boutonRetour" style="width:170px" type="button" onclick="Retour(1);">Retour</button>
+		 </div>
 	 </div>
+	 
 
 
 	 <div id="QCM2" class="collapse card border mb-3">
-		 <div class="card-header hauteurCadre"><span class="titre">Recyclage</span> <button class="btn btn-info btn-block boutonRetour" style="width:170px" type="button" onclick="Retour(2);">Retour</button></div>
+		 <div class="card-header hauteurCadre"><span class="titre">Recyclage</span> </div>
 		 <div class="card-body text">
 			 <h5 class="card-title">1) Que signifie "Recycler" ?</h5>
 			 <div class="table-responsive">
@@ -454,10 +460,13 @@
 				 </table>
 			 </div>
 		 </div>
+		 <div class="card-body text hauteurCadre">
+		 	<button class="btn btn-info btn-block boutonRetour" style="width:170px" type="button" onclick="Retour(2);">Retour</button>
+		 </div>
 	 </div>
 
 	 <div id="QCM3" class="collapse card border mb-3">
-		 <div class="card-header hauteurCadre"><span class="titre">La moutarde</span> <button class="btn btn-info btn-block boutonRetour" style="width:170px" type="button" onclick="Retour(3);">Retour</button></div>
+		 <div class="card-header hauteurCadre"><span class="titre">La moutarde</span> </div>
 		 <div class="card-body text">
 			 <h5 class="card-title">1) La moutarde est très riche:</h5>
 			 <div class="table-responsive">
@@ -530,10 +539,13 @@
 				 </table>
 			 </div>
 		 </div>
+		 <div class="card-body text hauteurCadre">
+		 	<button class="btn btn-info btn-block boutonRetour" style="width:170px" type="button" onclick="Retour(3);">Retour</button>
+		 </div>
 	 </div>
 
 	 <div id="QCM4" class="collapse card border mb-3">
-		 <div class="card-header hauteurCadre"><span class="titre">Le desert</span> <button class="btn btn-info btn-block boutonRetour" style="width:170px" type="button" onclick="Retour(4);">Retour</button></div>
+		 <div class="card-header hauteurCadre"><span class="titre">Le desert</span> </div>
 		 <div class="card-body text">
 			 <h5 class="card-title">1) Pendant combien de temps (maximum) ne peut-il pas pleuvoir dans le désert ?</h5>
 			 <div class="table-responsive">
@@ -606,10 +618,13 @@
 				 </table>
 			 </div>
 		 </div>
+		 <div class="card-body text hauteurCadre">
+		 	<button class="btn btn-info btn-block boutonRetour" style="width:170px" type="button" onclick="Retour(4);">Retour</button>
+		 </div>
 	 </div>
 
 	 <div id="QCM5" class="collapse card border mb-3">
-		 <div class="card-header hauteurCadre"><span class="titre">La Banque</span> <button class="btn btn-info btn-block boutonRetour" style="width:170px" type="button" onclick="Retour(5);">Retour</button></div>
+		 <div class="card-header hauteurCadre"><span class="titre">La Banque</span> </div>
 		 <div class="card-body text">
 			 <h5 class="card-title">1) Parmis les propositions ci-dessous, la-quelle fait référence à une banque?</h5>
 			 <div class="table-responsive">
@@ -682,7 +697,11 @@
 				 </table>
 			 </div>
 		 </div>
+		 <div class="card-body text hauteurCadre">
+		 	<button class="btn btn-info btn-block boutonRetour" style="width:170px" type="button" onclick="Retour(5s);">Retour</button>
+		 </div>
 	 </div>
+
 
 	<!-- Formulaire de contact -->
 	<div id="contactRetour" class="collapse">
@@ -974,6 +993,8 @@
 
 		nbreQuestion =0;
 
+		questionClone = document.getElementById("bodyACloner").cloneNode(true);
+
 		function ajouterQuestion(){
 			var exit = false;
 			//Check que l'intitulé de la question est renseignée
@@ -1018,6 +1039,7 @@
 					if (nbreRep >=2){
 						
 						for (i=0;i<nbreRep;i++){
+							//contenu réponse
 							nomRep=document.getElementsByClassName("row rep")[i].children[1].firstElementChild.value;
 							if (i>1){
 								RepQCMClone = document.getElementsByClassName("RepQCM")[0].cloneNode(true);
@@ -1042,9 +1064,38 @@
 						alert("2 réponses minimum !");
 					}
 					rAz();
-				//A FAIRE
+				//Si + d'une question, on clone + créer une nouvelle section
 				} else {
-					bodyClone = document.getElementById("bodyACloner").cloneNode(true);
+					//Set nom question du clone
+					newCloneQ = questionClone.cloneNode(true);
+					nomQuestion = document.getElementById("intituleQuestion").value;
+					newCloneQ.firstElementChild.firstElementChild.firstElementChild.innerHTML=nomQuestion;
+
+					//Compter nombre réponses
+					nbreRep = document.getElementsByClassName("row rep").length;
+
+					for (i=0;i<nbreRep;i++){
+						//Contenu réponse
+						nomRep=document.getElementsByClassName("row rep")[i].children[1].firstElementChild.value;
+						if (i>1){
+							RepQCMClone = newCloneQ.children[1].firstElementChild.firstElementChild.children[0].cloneNode(true);
+							RepQCMClone.children[0].innerHTML="Réponse "+(i+1);
+							RepQCMClone.children[1].innerHTML=nomRep;
+							//newCloneQ.children[1].firstElementChild.appendChild(RepQCMClone)
+							newCloneQ.children[1].firstElementChild.firstElementChild.appendChild(RepQCMClone);
+						} else {
+							newCloneQ.children[1].firstElementChild.firstElementChild.children[i].children[1].innerHTML=nomRep;
+						}
+						//test si cette réponse est une réponse correcte
+						booljuste = document.getElementsByClassName("custom-control-input")[i].checked;
+						if (booljuste == true){
+							newCloneQ.children[1].firstElementChild.firstElementChild.children[i].className = "RepQCM table-success";
+						} else {
+							newCloneQ.children[1].firstElementChild.firstElementChild.children[i].className = "RepQCM";
+						}
+					}
+					document.getElementById("divWrapper").appendChild(newCloneQ);
+					rAz();
 				}
 			}
 		
@@ -1076,6 +1127,7 @@
 		function supprimerQuestion(parNode){
 			if (nbreQuestion>1){
 				parNode.parentNode.parentNode.remove();
+				nbreQuestion = nbreQuestion -1;
 			} else {
 				alert("1 question minimum par QCM, veuillez en ajouter une autre avant de pouvoir supprimer celle-ci");
 			}
